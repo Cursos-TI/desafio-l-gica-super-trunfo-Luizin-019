@@ -198,6 +198,5 @@ int main(){
         printf("Rolou um EMPATE!!!");
      }
     }
-   
     return 0 ;
 }
