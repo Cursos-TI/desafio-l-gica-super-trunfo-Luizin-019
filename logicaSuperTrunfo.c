@@ -31,7 +31,7 @@ int main(){
 
     //atribuindo valores para as variáveis da carta 01
     printf("Qual estado da carta 01?(digite uma letra entre A - H) \n");
-    scanf("%c", estado01);
+    scanf(" %c", &estado01);
     printf("Qual código da cidade 01?(digite a letra do estado escolhida, seguida de um número entre 01-04) \n");
     scanf("%4s", codCard01);
     printf("Qual nome da cidade 01 ? \n");
@@ -47,7 +47,7 @@ int main(){
 
     //atribuindo valores para as variáveis da carta 02
     printf("Qual estado da carta 02?(digite uma letra entre A - H) \n");
-    scanf("%c", estado02);
+    scanf(" %c", &estado02);
     printf("Qual código da cidade 02?(digite a letra do estado escolhida, seguida de um número entre 01-04) \n");
     scanf("%4s", codCard02);
     printf("Qual nome da cidade 02 ? \n");
@@ -100,70 +100,104 @@ int main(){
     printf("==============================================================\n");
     
     //permite escolher atributo para competir
-    int atribut;
-    printf("Escolha um atributo para as cartas competirem: \n");
-    printf("1 - População \n2 - PIB \n3 - Densidade\n4- PIB per Capita\n 5- Área\n 6- Super Poder\n");
-    scanf("%d", &atribut);
-    
-    //para cada atributo escolhido um case
-    switch(atribut){
+    int atributo1, atributo2, resultado1, resultado2;
+    //essa variavel sera usada pra excluir o opçaõ ja eschida da lista de opçoes
+    char *atributName1, *atributName2;
+    printf("Escolha dois atributos para as cartas competirem: \n");
+    printf("1 - População \n2 - PIB \n3 - Densidade\n4- PIB per Capita\n 5- Área\n 6- Super Poder\n7- Pontos Turísticos\n");
+    scanf("%d", &atributo1);
+
+   switch(atributo1){
         case 1: 
-        if(pulation01 > pulation02){
-            printf("%s GANHOU com maior População\n", cardName01);
-        } else if(pulation02 > pulation01){
-            printf("%s GANHOU com maior População\n", cardName02);
-        }else {
-            printf("A População das duas cidades são iguais!\n");
-        }
+        atributName1 = "População";
+        resultado1 = (pulation01 > pulation02) ? 1 : 2;
         break;
         case 2: 
-        if(pib01 > pib02){
-            printf("%s GANHOU com maior PIB\n", cardName01);
-        } else if(pib02 > pib01){
-            printf("%s GANHOU com maior PIB\n", cardName02);
-        } else {
-            printf("O PIB das duas cidades são iguais!\n");
-        }
+        atributName1 = "PIB";
+        resultado1 = (pib02 > pib01) ? 1 : 2;
         break;
         case 3: 
-        if(densi01 > densi02){
-            printf("%s GANHOU com maior Densidade\n", cardName01);
-        } else if(densi02 > densi01){
-            printf("%s GANHOU com maior Densidade\n", cardName02);
-        } else {
-            printf("A Densidade das duas cidades são iguais!\n");
-        }
+        atributName1 = "Densidade";
+        resultado1 = (densi01 > densi02) ? 1 : 2;
         break;
         case 4: 
-        if(pperca01 > pperca02){
-            printf("%s GANHOU com maior PIB per Capita\n", cardName01);
-        } else if(pperca02 > pperca01){
-            printf("%s GANHOU com maior PIB per Capita\n", cardName02);
-        } else {
-            printf("O PIB per Capita das duas cidades são iguais!\n");
-        }
+        atributName1 = "PIB percapta";
+        resultado1 = (pperca01 > pperca02) ? 1 : 2;
         break;
         case 5: 
-        if(area01 > area02){
-            printf("%s GANHOU com maior Área\n", cardName01);
-        } else if(area02 > area01){
-            printf("%s GANHOU com maior Área\n", cardName02);
-        } else {
-            printf("A Área das duas cidades são iguais!\n");
-        }
+        atributName1 = "PIB percapta";
+        resultado1 = (area01 > area02) ? 1 : 2;
         break;
         case 6:  
-        if(superA > superB){
-            printf("%s GANHOU com maior Super Poder\n", cardName01);
-        } else if(superA > superB){
-            printf("%s GANHOU com maior Super Poder\n", cardName02);
-        } else {
-            printf("O Super Poder das duas cidades são iguais!\n");
-        }
+        atributName1 = "PIB percapta";
+        resultado1 = (superA > superB) ? 1 : 2;
+        break;
+        case 7:  
+        atributName1 = "Pontos Turísticos";
+        resultado1 = (turistpoint01 > turistpoint02) ? 1 : 2;
         break;
         default:
         printf("Opção Inválida");
     }
-    //      
+    printf("Escolha O segundo atributo: \n");
+    printf("1 - População \n2 - PIB \n3 - Densidade\n4- PIB per Capita\n 5- Área\n 6- Super Poder\n7- Pontos Turísticos\n");
+    scanf("%d", &atributo2);
+    if(atributo1 == atributo2){
+        printf("Este atributo ja foi escolhido!");
+        atributo2 = -1;
+    } else{
+        switch(atributo2){
+        case 1: 
+        atributName2 = "População";
+        resultado2 = (pulation01 > pulation02) ? 1 : 2;
+        break;
+        case 2: 
+        atributName2 = "PIB";
+        resultado2 = (pib02 > pib01) ? 1 : 2;
+        break;
+        case 3: 
+        atributName2 = "Densidade";
+        resultado2 = (densi01 > densi02) ? 1 : 2;
+        break;
+        case 4: 
+        atributName2 = "PIB percapta";
+        resultado2 = (pperca01 > pperca02) ? 1 : 2;
+        break;
+        case 5: 
+        atributName2 = "PIB percapta";
+        resultado2 = (area01 > area02) ? 1 : 2;
+        break;
+        case 6:  
+        atributName2 = "PIB percapta";
+        resultado2 = (superA > superB) ? 1 : 2;
+        break;
+        case 7:  
+        atributName2 = "Pontos Turísticos";
+        resultado2 = (turistpoint01 > turistpoint02) ? 1 : 2;
+        break;
+        default:
+        printf("Opção Inválida");
+    }
+
+    char *ganhador01, *ganhador02;
+    
+    //valida ganhador de cada atributo
+    ganhador01 = (resultado1 == 1) ? cardName01 : cardName02; 
+    ganhador02 = (resultado2 == 1) ? cardName01 : cardName02; 
+
+    //libera os resultados finais
+    printf("As cartas %s e %s vão competir pelos atributos escolhos\n", cardName01, cardName02);
+    printf("Os atributos escolhos foram (%s e %s)\n", atributName1, atributName2);
+    printf("O ganahador do primiero atributo (%s), foi %s\n", atributName1, ganhador01);
+    printf("O ganahador do segundo atributo (%s), foi %s\n", atributName2, ganhador02);
+     if(resultado1 == 1 && resultado1 == resultado2){
+        printf("%s VENCEU a competição\n", cardName01);
+     } else if(resultado2 == 2 && resultado1 == resultado2){
+        printf("%s VENCEU a competição\n", cardName02);
+     } else {
+        printf("Rolou um EMPATE!!!");
+     }
+    }
+   
     return 0 ;
 }
